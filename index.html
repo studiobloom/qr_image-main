@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="icon" href="./images/demo.png" />
+    <title>QR-Gen</title>
+</head>
+<body>
+    <div style="width: 50%; margin: 0 auto">
+        <div class="center">
+            <h1>QR-Gen</h1>
+        </div>
+        <label>URL*:</label>
+        <input class="w3-input" id="text" type="text" oninput="makeCode()" />
+
+        <label>Image File (optional):</label>
+        <input type="file" id="imageLoader" name="imageLoader" oninput="makeCode()" />
+		<br />
+		<label>Background Color:</label>
+		<input type="color" id="backgroundColorPicker" onchange="makeCode()" value="#000000" />
+		<label>Color #1:</label>
+        <input type="color" id="trueColorPicker" onchange="makeCode()" value="#cccccc" />
+        <label>Color #2:</label>
+        <input type="color" id="falseColorPicker" onchange="makeCode()" value="#FFFFFFc" />
+		
+		<div class="center hidden">
+			<canvas id="imageCanvas"></canvas>
+		</div>
+
+        <br />
+
+        <div class="tooltip">
+            Bit size:
+            <span class="tooltiptext">Larger sizes hide more of the image, but are easier to scan. I found that a size of 30 works well.</span>
+            <span id="printSize"></span>
+        </div>
+
+        <div class="slidecontainer">
+            <input type="range" min="10" max="100" value="30" class="slider" id="radiusSize" onchange="makeCode()" />
+        </div>
+
+        <div class="tooltip hidden">
+            Error Correction:
+            <span class="tooltiptext">Higher level of error correction makes bigger QR codes, but also allows you to hide more of the QR code. The former is more relevant to this app.</span>
+            <span id="printCorrection"></span>
+        </div>
+
+        <div class="slidecontainer hidden">
+            <input type="range" min="1" max="3" value="3" class="slider" id="errorCorrection" onchange="makeCode()" />
+        </div>
+
+
+        <div class="tooltip">
+            Border Size:
+            <span id="printBorderSize"></span>
+        </div>
+
+        <div class="slidecontainer">
+            <input type="range" min="0" max="5" value="0" class="slider" id="borderSize" onchange="makeCode()" />
+        </div>
+
+        <br />
+
+		<div class="center">
+            <canvas id="myCanvas"></canvas>
+        </div>
+    </div>
+
+    <a id="link"></a>
+    <div id="qrcode" style="display: none"></div>
+    <script src="qrcode.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
