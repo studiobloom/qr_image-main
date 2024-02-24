@@ -15,6 +15,7 @@ uploadCanvas.height = uploadHeight;
 
 img = false;
 
+
 function handleImage(e) {
   var reader = new FileReader();
   reader.onload = function (event) {
@@ -22,6 +23,7 @@ function handleImage(e) {
     img.onload = function () {
       uploadContext.clearRect(0, 0, uploadWidth, uploadHeight);
       uploadContext.drawImage(img, 0, 0, uploadWidth, uploadHeight);
+      makeCode();
     };
     img.src = event.target.result;
   };
