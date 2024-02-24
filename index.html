@@ -18,25 +18,26 @@
         <label>Image File (optional):</label>
         <input type="file" id="imageLoader" name="imageLoader" oninput="makeCode()" />
 		<br />
+
 		<label>Background Color:</label>
 		<input type="color" id="backgroundColorPicker" onchange="makeCode()" value="#000000" />
+        <br />
 		<label>Color #1:</label>
         <input type="color" id="trueColorPicker" onchange="makeCode()" value="#cccccc" />
+        <br />
         <label>Color #2:</label>
         <input type="color" id="falseColorPicker" onchange="makeCode()" value="#FFFFFFc" />
+        <br />
 		
 		<div class="center hidden">
 			<canvas id="imageCanvas"></canvas>
 		</div>
-
-        <br />
 
         <div class="tooltip">
             Bit size:
             <span class="tooltiptext">Larger sizes hide more of the image, but are easier to scan. I found that a size of 30 works well.</span>
             <span id="printSize"></span>
         </div>
-
         <div class="slidecontainer">
             <input type="range" min="10" max="100" value="30" class="slider" id="radiusSize" onchange="makeCode()" />
         </div>
@@ -60,12 +61,21 @@
         <div class="slidecontainer">
             <input type="range" min="0" max="5" value="0" class="slider" id="borderSize" onchange="makeCode()" />
         </div>
-
+        <div class="center">
+            <button
+                class="w3-button w3-white w3-border w3-border-white"
+                style="margin: 0 auto"
+                onclick="download()"
+            >
+                Download
+            </button>
+        </div>
         <br />
 
 		<div class="center">
             <canvas id="myCanvas"></canvas>
         </div>
+        
     </div>
 
     <a id="link"></a>

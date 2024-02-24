@@ -175,30 +175,36 @@ function download() {
  */
 function makeCode() {
   // Grab url input
-  var elementText = document.getElementById("text");
-  var url = elementText.value;
+  elementText = document.getElementById("text");
+  url = elementText.value;
 
   // Check for non-empty url
   if (!url) {
-      alert("Please type a URL before generating");
-      elementText.focus();
-      return;
+    alert("Error: empty input");
+    elementText.focus();
+    return;
   }
+
+  // // Pad URL since we want more density
+  // maxLength = 40;
+  // if (url.length < maxLength) {
+  //   url += "?/" + "0".repeat(maxLength - url.length);
+  // }
 
   // Generate URL bits
   qrcode.makeCode(url);
 
   // Manually draw canvas
-  var QRMatrix = qrcode._oQRCode.modules;
-  var QRLength = QRMatrix.length;
+  QRMatrix = qrcode._oQRCode.modules;
+  QRLength = QRMatrix.length;
 
   // Form canvas
-  var canvas = document.getElementById("myCanvas");
-  var ctx = canvas.getContext("2d");
+  canvas = document.getElementById("myCanvas");
+  ctx = canvas.getContext("2d");
 
   // QR code sizing
-  var bitLength = 10;
-  var canvasLength = bitLength * (QRLength + borderSizeValue * 2);
+  bitLength = 10;
+  canvasLength = bitLength * (QRLength + borderSizeValue * 2);
   canvas.width = canvasLength;
   canvas.height = canvasLength;
 
@@ -210,13 +216,13 @@ function makeCode() {
 
   // Set image of code
   if (img) {
-      ctx.drawImage(
-          img,
-          bitLength * borderSizeValue,
-          bitLength * borderSizeValue,
-          bitLength * QRLength,
-          bitLength * QRLength
-      );
+    ctx.drawImage(
+      img,
+      bitLength * borderSizeValue,
+      bitLength * borderSizeValue,
+      bitLength * QRLength,
+      bitLength * QRLength
+    );
   }
 
   // Set color of true bits
